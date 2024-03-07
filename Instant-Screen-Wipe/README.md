@@ -1,0 +1,1 @@
+The animation transition from one area to another is set at 2 seconds. This mod sets that value to 0. Obviously the transition will never be "instant" due to game calculations and CPU speed, but it is as instant as instant can be.
