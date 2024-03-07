@@ -1,0 +1,1 @@
+Removes any and all escorts including "item" escorts. Certain variants with "key champions" are actually flagged as escorts. This will remove them as well and is unintended. Unsure if this mod has issues with game rules where a champion must be next to an escort to do damage. Testing is needed.
