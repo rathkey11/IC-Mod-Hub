@@ -1,0 +1,1 @@
+This mod prevents any particles from spawning. Despite what the IC community says, changing PercentOfParticlesSpawned to 0 in the settings file does not prevent particles from spawning. There is game code that sets minimum particles per unit time regardless of whatever value is read from the settings file.
