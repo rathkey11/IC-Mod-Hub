@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 
 namespace InstantScreenWipe
 {
-    [BepInPlugin("rathkey.ic.instantscreenwipe", "Instant Screen Wipe", "0.1.0")]
+    [BepInPlugin("rathkey.ic.instantscreenwipe", "Instant Screen Wipe", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class InstantScreenWipe : BaseUnityPlugin
     {
