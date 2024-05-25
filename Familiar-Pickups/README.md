@@ -1,0 +1,1 @@
+Instead of needing 3, 5, and 6 familiars for pickups, you only need 1.

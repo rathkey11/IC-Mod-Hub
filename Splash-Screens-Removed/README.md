@@ -1,0 +1,1 @@
+Skips the splash screens on startup.

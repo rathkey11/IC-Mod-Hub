@@ -1,0 +1,1 @@
+Removes the red poptext above monsters.

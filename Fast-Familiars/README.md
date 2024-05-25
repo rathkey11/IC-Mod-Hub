@@ -1,0 +1,1 @@
+Familiars click instantly. Does not work on roaming ult bar.

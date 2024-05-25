@@ -1,0 +1,1 @@
+Auto closes the Welcome Back dialog.

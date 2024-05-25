@@ -1,0 +1,1 @@
+Removes the Area Complete banner from the top UI.

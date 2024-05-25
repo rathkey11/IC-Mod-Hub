@@ -1,0 +1,1 @@
+Adds a delete button to the Modron Formation Save Manager. Useful for deleting old or forgotten formations.

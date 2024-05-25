@@ -1,0 +1,1 @@
+Pressing the B key opens a parsed breakdown of effect keys that buff base dps.

@@ -1,0 +1,1 @@
+Pressing the P key pauses the game. For whatever reason.

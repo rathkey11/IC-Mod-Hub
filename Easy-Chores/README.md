@@ -1,0 +1,1 @@
+Patron challenges are completed instantly. 1 kill, 1 area, 1 ult, 1 distraction, etc.

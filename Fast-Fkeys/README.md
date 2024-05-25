@@ -1,0 +1,1 @@
+Fkeys press and repeat immediately with delay removed.

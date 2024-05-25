@@ -1,0 +1,1 @@
+Removes the offscreen spawn point for monsters.

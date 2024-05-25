@@ -1,0 +1,1 @@
+Pressing the Slash key resets BUD to null. Useful for formation testing to not have to wait for BUD decay.

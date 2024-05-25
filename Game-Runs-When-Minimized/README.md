@@ -1,0 +1,1 @@
+Allows the game to run at max framerate when the client is minimized.

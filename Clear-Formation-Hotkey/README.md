@@ -1,0 +1,1 @@
+Pressing the X key clears the formation.
