@@ -1,1 +1,3 @@
-This mod lowers the area quest goal to 1 even though the quest display shows otherwise. There are issues with this on boss areas that are not flagged as a boss. This is a game issue and not a mod issue. Pressing gg allows you to move to the next area. A boss bag may not spawn due to this.
+Increases quest reward by 25. Must be using an effect key that grants quest reward increase such as Hew Maan or fast core. Does not work on certain static monsters.
+
+No longer stops progress on static bosses.

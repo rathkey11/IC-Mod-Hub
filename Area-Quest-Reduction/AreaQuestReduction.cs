@@ -5,7 +5,7 @@ using CrusadersGame.GameScreen;
 
 namespace AreaQuestReduction
 {
-    [BepInPlugin("rathkey.ic.areaquestreduction", "Area Quest Reduction", "0.1.0")]
+    [BepInPlugin("rathkey.ic.areaquestreduction", "Area Quest Reduction", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class AreaQuestReduction : BaseUnityPlugin
     {
@@ -18,17 +18,12 @@ namespace AreaQuestReduction
         }
     }
 
-    [HarmonyPatch(typeof(AreaLevel), "AddQuestProgress")]
+    [HarmonyPatch(typeof(Area), "CalculateQuestRewardMultFromEffectKey")]
     public static class AreaQuestReductionPatch
     {
-        static bool Prefix(CrusadersGame.GameScreen.AreaLevel __instance)
+        static bool Prefix(ref double inputQuestRewardMult)
         {
-            Debug.Log("Before patch: QuestRemaining = " + __instance.QuestRemaining);
-            if (__instance.QuestRemaining > 0)
-            {
-                __instance.QuestRemaining = 1;
-                Debug.Log("After patch: QuestRemaining = " + __instance.QuestRemaining);
-            }
+            inputQuestRewardMult = 25.0;
             return true;
         }
     }
