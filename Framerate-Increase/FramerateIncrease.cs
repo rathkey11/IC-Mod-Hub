@@ -2,12 +2,15 @@
 using UnityEngine;
 using BepInEx;
 using CrusadersGame;
-using CrusadersGame.Dialogs;
 using System;
+using CrusadersGame.Dialogs.Settings;
+using CrusadersGame.GameScreen;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace FramerateIncrease
 {
-    [BepInPlugin("rathkey.ic.framerateincrease", "Framerate Increase", "0.1.0")]
+    [BepInPlugin("rathkey.ic.framerateincrease", "Framerate Increase", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class FramerateIncrease : BaseUnityPlugin
     {
@@ -29,21 +32,37 @@ namespace FramerateIncrease
         }
     }
 
-    [HarmonyPatch(typeof(TitledSlider), "Init", new Type[] { typeof(string), typeof(string), typeof(int), typeof(int), typeof(int), typeof(string) })]
-    class SliderPatch1
+    [HarmonyPatch(typeof(SettingsPanel), MethodType.Constructor, new Type[] { typeof(CrusadersGameController) })]
+    class SettingsPanelTranspiler
     {
-        static void Prefix(ref int maxValue)
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            maxValue = 1000;
+            foreach (var instruction in instructions)
+            {
+                if (instruction.opcode == OpCodes.Ldc_I4_S && (sbyte)instruction.operand == 60)
+                {
+                    instruction.opcode = OpCodes.Ldc_I4;
+                    instruction.operand = 1000;
+                }
+                yield return instruction;
+            }
         }
     }
 
-    [HarmonyPatch(typeof(Slider), "Init", new Type[] { typeof(int), typeof(int), typeof(int), typeof(string), typeof(bool) })]
-    class SliderPatch2
+    [HarmonyPatch(typeof(SettingsPanel2GraphicsPanel), MethodType.Constructor, new Type[] { typeof(CrusadersGameController) })]
+    class SettingsPanel2GraphicsPanelTranspiler
     {
-        static void Prefix(ref int maxValue)
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            maxValue = 1000;
+            foreach (var instruction in instructions)
+            {
+                if (instruction.opcode == OpCodes.Ldc_I4_S && (sbyte)instruction.operand == 60)
+                {
+                    instruction.opcode = OpCodes.Ldc_I4;
+                    instruction.operand = 1000;
+                }
+                yield return instruction;
+            }
         }
     }
 }
