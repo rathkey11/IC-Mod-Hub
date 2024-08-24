@@ -7,7 +7,7 @@ using CrusadersGame.GameScreen;
 
 namespace EllywickGemDeck
 {
-    [BepInPlugin("rathkey.ic.ellywickgemdeck", "Ellywick Gem Deck", "0.1.0")]
+    [BepInPlugin("rathkey.ic.ellywickgemdeck", "Ellywick Gem Deck", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class EllywickGemDeck : BaseUnityPlugin
     {
@@ -56,7 +56,7 @@ namespace EllywickGemDeck
     [HarmonyPatch(typeof(EllywickDeckOfManyThingsHandler), "MonsterKilled")]
     public static class OneKillDeckDraw
     {
-        static bool Prefix(object __instance, ActiveCampaignData e, Monster data)
+        static bool Prefix(object __instance, ActiveCampaignData acd, Monster data)
         {
             var tryDrawCardMethod = AccessTools.Method(__instance.GetType(), "TryDrawCard");
             var cardsInHandField = AccessTools.Field(__instance.GetType(), "cardsInHand");
