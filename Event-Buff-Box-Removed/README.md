@@ -1,0 +1,1 @@
+Removes the event buff box on the top bar UI.

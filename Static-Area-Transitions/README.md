@@ -1,0 +1,1 @@
+Forces area transtions to be static. The community calls these quick transitions or QT.

@@ -1,0 +1,1 @@
+Removes gold drop, pop, and hop animations. Also removes the fly time on pickup.

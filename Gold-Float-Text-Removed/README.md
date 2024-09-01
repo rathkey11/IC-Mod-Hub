@@ -1,0 +1,1 @@
+Removes the gold text popup number when killing monsters.
