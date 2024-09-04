@@ -1,0 +1,1 @@
+Skips the ARE YOU SURE dialog when buying chests with gems from the shop. May affect other confirmation purchases.

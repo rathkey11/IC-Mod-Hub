@@ -1,0 +1,1 @@
+When bulk opening chests, this skips the FLIP CARDS and SEE ALL LOOT dialogs and goes right to ALL LOOT. Does not skip animations.

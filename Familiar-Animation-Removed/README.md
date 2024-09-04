@@ -1,0 +1,1 @@
+Familiars stop animating after the first loop.

@@ -1,0 +1,1 @@
+Forces NERDS to be orange, red, and green. Spec choice shouldn't matter. May require use of their ultimate a single time.
