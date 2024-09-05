@@ -1,11 +1,11 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 using BepInEx;
-using CrusadersGame.GameScreen.VisualEffects;
+using CrusadersGame.GameScreen.Goobers;
 
 namespace GoldFloatTextRemoved
 {
-    [BepInPlugin("rathkey.ic.goldfloattextremoved", "Gold Float Text Removed", "0.1.0")]
+    [BepInPlugin("rathkey.ic.goldfloattextremoved", "Gold Float Text Removed", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class GoldFloatTextRemoved : BaseUnityPlugin
     {
@@ -18,13 +18,27 @@ namespace GoldFloatTextRemoved
         }
     }
 
-    [HarmonyPatch(typeof(FloatText))]
-    [HarmonyPatch(MethodType.Constructor)]
+    [HarmonyPatch(typeof(Goober), "PickupAfterDelay")]
     public static class GoldFloatTextRemovedPatch
     {
-        static bool Prefix()
+        static void Prefix(object __instance)
         {
-            return false;
+            var gooberDataField = AccessTools.Field(typeof(Goober), "gooberData");
+            var gooberData = (Goober.GooberData)gooberDataField.GetValue(__instance);
+
+            var numTextDrawablesField = AccessTools.Field(typeof(Goober), "numTextDrawables");
+            var numTextDrawables = (int)numTextDrawablesField.GetValue(null);
+
+            bool flag = true;
+            if (numTextDrawables >= 50)
+            {
+                flag = (numTextDrawables % (numTextDrawables / 25) == 0);
+            }
+
+            if (flag && gooberData.Payload.Type == GooberPayload.PayloadType.Gold)
+            {
+                gooberData.Text = string.Empty;
+            }
         }
     }
 }
