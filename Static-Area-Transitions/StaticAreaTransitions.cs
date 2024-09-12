@@ -2,11 +2,12 @@
 using UnityEngine;
 using BepInEx;
 using CrusadersGame.GameScreen;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace StaticAreaTransitions
 {
-    [BepInPlugin("rathkey.ic.staticareatransitions", "Static Area Transitions", "0.1.0")]
+    [BepInPlugin("rathkey.ic.staticareatransitions", "Static Area Transitions", "0.2.0")]
     [BepInProcess("IdleDragons.exe")]
     public class StaticAreaTransitions : BaseUnityPlugin
     {
@@ -22,27 +23,19 @@ namespace StaticAreaTransitions
     [HarmonyPatch(typeof(CrusadersGameController), "SetActiveArea")]
     public static class StaticAreaTransitionsPatch
     {
-        static bool Prefix(CrusadersGameController __instance, AreaLevel area, bool isUserAction, ref bool instant)
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (__instance.GameInstance.InOfflineMode)
+            var codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++)
             {
-                instant = true;
+                // Look for forward or backward direction
+                if (codes[i].opcode == OpCodes.Ldc_I4_0 || codes[i].opcode == OpCodes.Ldc_I4_1)
+                {
+                    // Replace with static direction
+                    codes[i] = new CodeInstruction(OpCodes.Ldc_I4_2);
+                }
             }
-
-            if (!instant)
-            {
-                __instance.ActiveCampaignData.EventDispatcher.FireAreaChangedTransitionStart(area);
-                AreaTransitioner.AreaTransitionDirection direction = AreaTransitioner.AreaTransitionDirection.Static;
-
-                FieldInfo areaTransitionerField = AccessTools.Field(typeof(CrusadersGameController), "areaTransitioner");
-                AreaTransitioner areaTransitioner = (AreaTransitioner)areaTransitionerField.GetValue(__instance);
-
-                areaTransitioner.TransitionTo(area, direction, isUserAction);
-
-                return false;
-            }
-
-            return true;
+            return codes;
         }
     }
 }
