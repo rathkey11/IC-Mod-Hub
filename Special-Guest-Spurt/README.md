@@ -1,0 +1,1 @@
+DM Special Guest Star will always be Spurt. Could be changed to any hero by editing the result number which is the heroID.
