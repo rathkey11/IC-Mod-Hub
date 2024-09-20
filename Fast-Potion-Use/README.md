@@ -1,0 +1,1 @@
+Holding SHIFT then clicking a potion will automatically use one without a dialog confirmation. Works in the inventory menu as well as the potion manager. Also works on other buff items like bounties and scrolls.
